@@ -1,0 +1,23 @@
+<template name="fiches">
+  <h3>{{type}}</h3><input type="hidden" id="type" value="{{type}}">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Fichenummer</th>
+        <th>Datum</th>
+        <th>Districtsnummer</th>
+        <th>P. coördinator</th>
+      </tr>
+     </thead>
+     <tbody>
+       {{#each documenten Document}}
+        <tr>
+          <td><a href="/documenten/{{_id}}">{{fichenummer}}</a></td>
+          <td><a href="/documenten/{{_id}}">{{op_datum}} {{op_tijd}}</a></td>
+          <td><a href="/documenten/{{_id}}">{{district}}</a></td>
+          <td><a href="/documenten/{{_id}}">{{provinciaal_coordinator}}</a></td>
+        </tr>
+       {{/each}}
+     </tbody>
+  </table>
+</template>

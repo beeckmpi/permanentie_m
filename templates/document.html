@@ -1,0 +1,99 @@
+<template name="Document">
+  <div class=row ng-controller="permanentieAddCtrlr" >
+    <div class="vertical col-md-8">
+      {{#if equals currentUser.username doorgegeven_aan}}
+      <a href="/bewerken_documenten/{{_id}}" class="btn btn-default btn-sm" id="bewerken" style="float:right; margin-top: 17px">Bewerken</a>
+      {{/if}}
+      <H3>Fichenummer: {{fichenummer}}</H3>
+      <small style="padding-top: -8px; margin-bottom: 7px;">Aangemaakt door {{currentUser.profile.naam}} op {{createdAt}}</small>
+          <div id="panel1a" class="tab-pane" role="tabpanel" ng-show="panels.panel1a">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="edit-op-datum">Op (datum)</label>
+                <p>{{op_datum}}</p>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="edit-op-uur">Oproep</label>
+                <p>{{op_tijd}}</p>
+              </div>          
+            </div>
+            <div class="form-group">
+              <label for="edit-bijkomende-informatie">Bijkomende informatie </label>
+              {{bijkomende_informatie}}
+            </div>
+            <div class="form-group">
+              <label for="edit-district">District <span class="form-required" title="Dit veld is verplicht.">*</span> </label>
+              <p>{{district}}</p>
+            </div>
+            <div class="form-group">
+              <label for="edit-provinciaal-coordinator">Oproep ontvangen door <span class="form-required" title="Dit veld is verplicht.">*</span></label>
+              <p>{{provinciaal_coordinator}}</p>
+            </div>
+            <div class="form-group" role="application">
+              <label for="doorgegeven-aan">Doorgegeven door provinciaal coördinator aan <span class="form-required" title="Dit veld is verplicht.">*</span></label>
+              <p>{{doorgegeven_aan}}</p>
+            </div>      
+            <div class="form-group">
+              <label for="edit-oproep-door">Oproep door </label>
+              <p>{{op_vraag_van}}</p>
+              {{#if op_vraag_van_andere}}
+              <p>{{op_vraag_van_andere}}</p>
+              {{/if}}
+            </div>
+            <div class="form-group">
+              <label for="melding">Melding </label>
+              <p>{{melding}}</p>
+              {{#if melding_andere}}
+              <p>{{melding_andere}}</p>
+              {{/if}}
+            </div>
+            <div class="form-group">
+              <label for="edit-weg">Weg </label>
+              <p>{{weg}}</p>
+            </div>
+            <div class="form-group" role="application">
+              <label for="edit-gemeente">Grondgebied (Gemeente of postcode) </label>
+              <p>{{gemeente}}</p>
+            </div>
+            <div class="form-group">
+              <label for="edit-rijrichting">Rijrichting </label>
+              <p>{{rijrichting}}</p>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="edit-gewestweg">Gewestweg </label>
+                <p>{{gewestweg}}</p>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="edit-richting">Richting </label>
+                <p>{{richting}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="edit-kmpunt">Km punt van </label>
+                <p>{{kmpunt}}</p>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="edit-kmpunttot">Km punt tot </label>
+                <p>{{kmpunttot}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="edit-straat">Straat </label>
+                <p>{{straat}}</p>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="edit-huisnummer">Huisnummer </label>
+                <p>{{huisnummer}}</p>
+              </div>
+            </div>
+            <div class="form-group form-type-textarea form-item-opmerking-bereikbaarheid">
+              <label for="edit-opmerking-bereikbaarheid">Opmerking bereikbaarheid </label>
+              <p>{{opmerking_bereikbaarheid}}</p>
+            </div> 
+          </div>
+     </div>
+  </div>
+</template>

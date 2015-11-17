@@ -1,0 +1,17 @@
+<template name="zijbar">
+	<div class="col-md-2 holder">
+		<button class="btn btn-danger"  id="nieuweFiche" style="width">Nieuwe Fiche</button>
+			<ul class="nav nav-pills nav-stacked">
+				<li role="presentation"><a href="/mijnFiches">Mijn fiches</a></li>
+				<li role="presentation"><a href="/ontvangenFiches">Ontvangen Fiches</a></li>
+				<li role="presentation"><a href="/alleFiches">Alle fiches</a></li>
+			</ul>
+			{{#if equals currentUser.profile.rol "Administrator"}}		
+				{{currentUser.profile.rol}}		
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation"><a href="/gebruikerAanmaken">Gebruiker Toevoegen</a></li>
+					<li><a href="/gebruikersLijst">Gebruikerslijst</a></li>
+				</ul>
+			{{/if}}
+	</div>
+</template>

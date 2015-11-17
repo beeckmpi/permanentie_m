@@ -1,0 +1,112 @@
+<template name="Toevoegen">
+  <div id="message" style="border: 2px solid green; color: green; display: none"></div>
+  <div class=row ng-controller="permanentieAddCtrlr" >
+    <div class="vertical col-md-8">
+      <form id=toevoegen>
+          <div id="panel1a" class="tab-pane" role="tabpanel" ng-show="panels.panel1a">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="edit-op-datum">Op (datum)</label>
+                <input type=date name="op_datum" id=edit-op-datum placeholder="Op (datum)" value="{{dateTime.date}}" class="form-control">
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="edit-op-uur">Oproep</label>
+                <input type=time name="op_tijd" id=edit-op-uur placeholder="Uur" class="form-control" value="{{dateTime.time}}">
+              </div>          
+            </div>
+            <div class="form-group">
+              <label for="edit-bijkomende-informatie">Bijkomende informatie </label>
+              <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
+                <textarea placeholder="Bijkomende informatie" id="edit-bijkomende-informatie" name="bijkomende_informatie" cols="60" rows="2" class="form-control"></textarea>            <div class="grippie"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="edit-district">District <span class="form-required" title="Dit veld is verplicht.">*</span> </label>
+              <select id="edit-district" name="district" required="required" class="form-control">
+                <option value="" selected="selected">--selecteer--</option><option value="121">Antwerpen d'Herbouvillekaai (121)</option><option value="123">Brecht (123)</option><option value="100">Directie (100)</option><option value="114">Geel (114)</option><option value="112">Puurs (112)</option><option value="125">Vosselaar (125)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="edit-provinciaal-coordinator">Oproep ontvangen door <span class="form-required" title="Dit veld is verplicht.">*</span></label>
+              <input placeholder="Provinciaal coördinator" type="text" id="edit-provinciaal-coordinator" name="provinciaal_coordinator_disabled" disabled="disabled" value="{{currentUser.profile.naam}}" size="40" maxlength="128" class="form-text form-control required form-autocomplete" autocomplete="OFF" aria-autocomplete="list">
+              <input placeholder="Provinciaal coördinator" style="display:none" type="text" id="edit-provinciaal-coordinator" name="provinciaal_coordinator" value="{{currentUser.profile.naam}}" size="40" maxlength="128" class="form-text form-control required form-autocomplete" autocomplete="OFF" aria-autocomplete="list">
+            </div>
+            <div class="form-group" role="application">
+              <label for="doorgegeven-aan">Doorgegeven door provinciaal coördinator aan <span class="form-required" title="Dit veld is verplicht.">*</span></label>
+              <select id="doorgegeven-aan" name="doorgegeven_aan" class="form-control">
+                <option value="">--selecteer--</option>
+                {{#each personen Persoon}}
+                  <option value="{{username}}">{{profile.naam}}</option>
+                {{/each}}
+              </select>
+            </div>      
+            <div class="form-group">
+              <label for="edit-oproep-door">Oproep door </label>
+              <select id="edit-op-vraag-van" name="op_vraag_van" class="form-control">
+                <option value="">--selecteer--</option><option value="Wachtdienst">Wachtdienst</option><option value="Politie">Politie</option><option value="Andere">Andere</option>
+              </select>
+               <input placeholder="Andere" type="text" id="op_vraag_van_andere" name="op_vraag_van_andere"  size="40" maxlength="128" class="form-text form-control form-autocomplete" autocomplete="OFF" aria-autocomplete="list" style="display: none">
+            </div>
+            <div class="form-group">
+              <label for="melding">Melding </label>
+              <select id="melding" name="melding" class="form-control">
+                <option value="0">--selecteer--</option><option value="Weginfrastructuur">Weginfrastructuur</option><option value="Wateroverlast">Wateroverlast</option><option value="Stormschade">Stormschade</option><option value="Ongeval">Ongeval</option><option value="Ladingverlies">Ladingverlies</option><option value="Bodemverontreining">Bodemverontreining</option><option value="Andere">Andere</option>
+              </select>
+              <input placeholder="Andere" type="text" id="melding_andere" name="melding_andere"  size="40" maxlength="128" class="form-text form-control form-autocomplete" autocomplete="OFF" aria-autocomplete="list" style="display: none">
+            </div>
+            <div class="form-group">
+              <label for="edit-weg">Weg </label>
+              <input placeholder="Weg" type="text" id="edit-weg" name="weg" value="" size="32" maxlength="128" class="form-control">
+            </div>
+            <div class="form-group" role="application">
+              <label for="edit-gemeente">Grondgebied (Gemeente of postcode) </label>
+              <input placeholder="Gemeente of Postcode" type="text" id="edit-gemeente" name="gemeente" value="" size="32" maxlength="128" class="form-control" autocomplete="OFF" aria-autocomplete="list">
+            </div>
+            <div class="form-group">
+              <label for="edit-rijrichting">Rijrichting </label>
+              <input placeholder="Rijrichting" type="text" id="edit-rijrichting" name="rijrichting" value="" size="32" maxlength="128" class="form-control">
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="edit-gewestweg">Gewestweg </label>
+                <input placeholder="Gewestweg" type="text" id="edit-gewestweg" name="gewestweg" value="" size="32" maxlength="128" class="form-control">
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="edit-richting">Richting </label>
+                <select id="edit-richting" name="richting" class="form-control">
+                  <option value="0">--selecteer--</option><option value="1">Oplopend</option><option value="2">Aflopend</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="edit-kmpunt">Km punt van </label>
+                <input placeholder="Km punt van" type="text" id="edit-kmpunt" name="kmpunt" value="" size="4" maxlength="128" class="form-control">
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="edit-kmpunttot">Km punt tot </label>
+                <input placeholder="km punt tot" type="text" id="edit-kmpunttot" name="kmpunttot" value="" size="4" maxlength="128" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8 form-group">
+                <label for="edit-straat">Straat </label>
+                <input placeholder="Straat" type="text" id="edit-straat" name="straat" value="" size="32" maxlength="128" class="form-control">
+              </div>
+              <div class="col-md-4 form-group">
+                <label for="edit-huisnummer">Huisnummer </label>
+                <input placeholder="Huisnummer" type="text" id="edit-huisnummer" name="huisnummer" value="" size="4" maxlength="128" class="form-control">
+              </div>
+            </div>
+            <div class="form-group form-type-textarea form-item-opmerking-bereikbaarheid">
+              <label for="edit-opmerking-bereikbaarheid">Opmerking bereikbaarheid </label>
+              <textarea placeholder="Opmerking Bereikbaarheid" id="edit-opmerking-bereikbaarheid" name="opmerking_bereikbaarheid" cols="60" rows="2" class="form-control"></textarea>
+            </div> 
+            <div class="form-group">
+              <input type="submit" class="btn btn-danger" value="Doorsturen">
+            </div>
+          </div>
+       </form>
+     </div>
+  </div>
+</template>

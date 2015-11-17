@@ -1,0 +1,662 @@
+<template name="Bewerken">
+  <div id="message" style="border: 2px solid green; color: green; display: none"></div>
+  <form id="bewerken">
+  <div class=row ng-controller="permanentieAddCtrlr" >
+    <div class="col-md-3">
+      <div style="font-size:larger; font-weight:bold">
+        Interventiefiche
+      </div>
+      <dl class="tabs vertical hide-for-small" data-tab data-options="deep_linking: true">
+        <dd class="tab1">
+          Gegevens Provinciaal Coördinator
+        </dd>
+        <dd class="tab4">
+          Vaststelling
+        </dd>
+        <dd class="tab5">
+          Beslissing oproep bijstand
+        </dd>
+        <dd class="tab6">
+          Tijdstippen + Middelen uitvoering
+        </dd>
+        <dd class="tab7">
+          Bijkomende details vaststellingen
+        </dd>
+        <dd class="tab8">
+          Bijlages
+        </dd>
+        <dd class="tab9">
+          Afmelding
+        </dd>
+      </dl>
+      <p><a href="/documenten/{{_id}}" class="btn btn-default btn-sm">Annuleer</a><input type="submit" class="btn btn-danger" value="Wijzigingen opslaan"></p>
+      <!--<label for="smallNav" class="show-for-small-only">Formulier navigatie</label>
+      <select class="show-for-small-only" id=smallNav ng-model=tabnav>
+      <option value="panel1a">Details Interventiefiche</option>
+      <option value="panel2a">Type oproep</option>
+      <option value="panel3a">Interventieplaats</option>
+      <option value="panel4a">Vaststelling</option>
+      <option value="panel5a">Beslissing oproep bijstand</option>
+      <option value="panel6a">Tijdstippen + Middelen uitvoering</option>
+      <option value="panel7a">Bijkomende details vaststellingen</option>
+      <option value="panel8a">Bijlages</option>
+      <option value="panel9a">Afmelding</option>
+      </select>-->
+    </div>
+    <div class="tab-content vertical col-md-8">
+      <div id="panel1a" class="tab-pane" role="tabpanel" ng-show="panels.panel1a">
+        <input name="_id" type="hidden" value="{{_id}}">
+        <input name="createdAt" type="hidden" value="{{createdAt}}">
+        <input name="username" type="hidden" value="{{username}}">
+        <input name="fichenummer" type="hidden" value="{{fichenummer}}">
+        <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="edit-op-datum">Op (datum)</label>
+                <input type=date name="op_datum" style="display:none"  value="{{op_datum}}" id=edit-op-datum placeholder="Op (datum)" class="form-control">
+                <p>{{op_datum}}</p>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="edit-op-uur">Oproep</label>
+                <input type=time name="op_tijd" id=edit-op-uur style="display:none" value="{{op_tijd}}"  placeholder="Uur" class="form-control">
+                <p>{{op_tijd}}</p>
+              </div>          
+            </div>
+            <div class="form-group">
+              <label for="edit-bijkomende-informatie">Bijkomende informatie </label>
+              <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea" style="display:none" >
+                <textarea placeholder="Bijkomende informatie" id="edit-bijkomende-informatie" name="bijkomende_informatie" cols="60" rows="2" class="form-control">{{bijkomende_informatie}}</textarea>            <div class="grippie"></div>
+              </div>
+              <p>{{bijkomende_informatie}}</p>
+            </div>
+            <div class="form-group">
+              <label for="edit-district">District  </label>
+              <input type="hidden" name="district" value="{{district}}"><p>{{district}}</p>
+            </div>
+            <div class="form-group">
+              <label for="edit-provinciaal-coordinator">Oproep ontvangen door </label>           
+              <input type="hidden" name="provinciaal_coordinator" value="{{provinciaal_coordinator}}"><p>{{provinciaal_coordinator}}</p>
+            </div>
+            <div class="form-group" role="application">
+              <label for="doorgegeven-aan">Doorgegeven door provinciaal coördinator aan </label>
+              <input type="hidden" name="doorgegeven_aan" value="{{doorgegeven_aan}}"><p>{{doorgegeven_aan}}</p>
+            </div>      
+            <div class="form-group">
+              <label for="edit-oproep-door">Oproep door </label>
+              <input type="hidden" name="op_vraag_van" value="{{op_vraag_van}}"><p>{{op_vraag_van}}</p>
+              <input type="hidden" name="op_vraag_van_andere" value="{{op_vraag_van_andere}}"><p>{{op_vraag_van_andere}}</p>
+            </div>
+            <div class="form-group">
+              <label for="melding">Melding </label>
+              <input type="hidden" name="melding" value="{{melding}}"><p>{{melding}}</p>
+              <input type="hidden" name="melding_andere" value="{{melding_andere}}"><p>{{melding_andere}}</p>
+            </div>
+            <div class="form-group">
+              <label for="edit-weg">Weg </label>
+              <input type="hidden" name="weg" value="{{weg}}"><p>{{weg}}</p>
+            </div>
+            <div class="form-group" role="application">
+              <label for="edit-gemeente">Grondgebied (Gemeente of postcode) </label>
+              <input type="hidden" name="gemeente" value="{{gemeente}}"><p>{{gemeente}}</p>
+            </div>
+            <div class="form-group">
+              <label for="edit-rijrichting">Rijrichting </label>
+              <input type="hidden" name="rijrichting" value="{{rijrichting}}"><p>{{rijrichting}}</p>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="edit-gewestweg">Gewestweg </label>
+                <input type="hidden" name="gewestweg" value="{{gewestweg}}"><p>{{gewestweg}}</p>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="edit-richting">Richting </label>
+                <input type="hidden" name="richting" value="{{richting}}"><p>{{richting}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="edit-kmpunt">Km punt van </label>
+                <input type="hidden" name="kmpunt" value="{{kmpunt}}"><p>{{kmpunt}}</p>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="edit-kmpunttot">Km punt tot </label>
+                <input type="hidden" name="kmpunttot" value="{{kmpunttot}}"><p>{{kmpunttot}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8 form-group">
+                <label for="edit-straat">Straat </label>
+                <input type="hidden" name="straat" value="{{straat}}"><p>{{straat}}</p>
+              </div>
+              <div class="col-md-4 form-group">
+                <label for="edit-huisnummer">Huisnummer </label>
+                <input type="hidden" name="huisnummer" value="{{huisnummer}}"><p>{{huisnummer}}</p>
+              </div>
+            </div>
+            <div class="form-group form-type-textarea form-item-opmerking-bereikbaarheid">
+              <label for="edit-opmerking-bereikbaarheid">Opmerking bereikbaarheid </label>
+              <textarea placeholder="Opmerking Bereikbaarheid" id="edit-opmerking-bereikbaarheid" style="display:none"  name="opmerking_bereikbaarheid" cols="60" rows="2" class="form-control">{{opmerking_bereikbaarheid}}</textarea>
+              <p>{{opmerking_bereikbaarheid}}</p>
+            </div> 
+      </div>
+      
+      <div class="content tab-pane" id="panel3a" role="tabpanel" ng-show="panels.panel3a">
+      </div>
+      <div class="content tab-pane" id="panel4a" data-options="scroll_to_content: false" ng-show="panels.panel4a">
+        <div class="col-md-6 form-group">
+          <label for="ter_plaats">Ter plaatse</label>
+          <input type=time id=edit-op-uur name="ter_plaats" value="{{ter_plaats}}" placeholder="Uur" class="form-control">
+        </div>
+        <div class="col-md-6 form-group">
+           <label for="einde">Einde</label>
+           <input type=time id=edit-op-uur name="einde" value="{{einde}}" placeholder="Uur" class="form-control">
+        </div>
+        <div class="form-item form-type-checkboxes form-item-aanwezig">
+          <label for="edit-aanwezig">Aanwezig ter plaatse </label>
+          <div id="edit-aanwezig" class="form-checkboxes" style="margin: 8px">
+            <div class="checkbox">
+              <label for="edit-aanwezig-federale-politie">
+                <input type="checkbox" checked={{checked "Federale Politie" aanwezig.Federale_Politie}} id="edit-aanwezig-federale-politie" name="aanwezig[Federale_Politie]" value="Federale Politie">
+                Federale Politie </label>
+            </div>
+            <div class="checkbox">
+              <label for="edit-aanwezig-brandweer">
+                <input type="checkbox" id="edit-aanwezig-brandweer" checked={{checked "Brandweer" aanwezig.Brandweer}} name="aanwezig[Brandweer]" value="Brandweer">
+                Brandweer </label>
+            </div>
+            <div class="checkbox">
+              <label for="edit-aanwezig-fast-takeldienst">
+                <input type="checkbox" id="edit-aanwezig-fast-takeldienst"  checked={{checked "FAST / Takeldienst" aanwezig.FAST_Takeldienst}} name="aanwezig[FAST_Takeldienst]" value="FAST / Takeldienst">
+                FAST / Takeldienst </label>
+            </div>
+            <div class="checkbox">
+              <label for="edit-aanwezig-civiele-bescherming">
+                <input type="checkbox" id="edit-aanwezig-civiele-bescherming" checked={{checked "Civiele Bescherming" aanwezig.Civiele_Bescherming}} name="aanwezig[Civiele_Bescherming]" value="Civiele Bescherming">
+                Civiele Bescherming </label>
+            </div>
+            <div class="checkbox">
+              <label class="option" for="edit-aanwezig-andere">
+                <input type="checkbox" id="edit-aanwezig-andere" checked={{checked "Andere" aanwezig.Andere}} name="aanwezig[Andere]" value="Andere">
+                Andere </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-item form-type-textarea form-item-aanwezig-opmerking">
+          <label for="edit-aanwezig-opmerking">Opmerking </label>
+          <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
+            <textarea placeholder="Opmerking" id="edit-aanwezig-opmerking" name="aanwezig_opmerking" cols="60" rows="1" class="form-textarea">{{aanwezig_opmerking}}</textarea>            <div class="grippie"></div>
+          </div>
+        </div>
+        <h4>Incident / Schade</h4>
+        <div class="straat_nr">
+          <div class="checkbox">
+            <label class="option" for="edit-weginfrastructuur">
+              <input type="checkbox" id="edit-weginfrastructuur" checked={{checked "weginfrastructuur" weginfrastructuur}} name="weginfrastructuur" value="1">
+              Weginfrastructuur </label>
+          </div>
+          <div id="edit-weginfra" class="form-checkboxes row show_next">
+            <div class="col-md-4">
+              <div class="checkbox">
+                <label class="option" for="edit-weginfra-put-in-rijbaan">
+                  <input type="checkbox" id="edit-weginfra-put-in-rijbaan" checked={{checked "Put in rijbaan" weginfra.Put_in_rijbaan}} name="weginfra[Put_in_rijbaan]" value="Put in rijbaan">
+                  Put in rijbaan </label>
+              </div>
+              <div class="checkbox">
+                <label class="option" for="edit-weginfra-signalisatie">
+                  <input type="checkbox" id="edit-weginfra-signalisatie" checked={{checked "Signalisatie" weginfra.Signalisatie}} name="weginfra[Signalisatie]" value="Signalisatie" class="form-checkbox jquery-once-1-processed">
+                  Signalisatie </label>
+              </div>
+              <div class="checkbox">
+                <label class="option" for="edit-weginfra-boomstruik">
+                  <input type="checkbox" id="edit-weginfra-boomstruik" name="weginfra[Boom_Struik]" checked={{checked "Boom/Struik" weginfra.Boom_Struik}} value="Boom/Struik" class="form-checkbox jquery-once-1-processed">
+                  Boom/Struik </label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="checkbox">
+                <label class="option" for="edit-weginfra-kunstwerk">
+                  <input type="checkbox" id="edit-weginfra-kunstwerk" name="weginfra[Kunstwerk]" checked={{checked "Kunstwerk" weginfra.Boom_Struik}} value="Kunstwerk" class="form-checkbox jquery-once-1-processed">
+                  Kunstwerk </label>
+              </div>
+              <div class="checkbox">
+                <label class="option" for="edit-weginfra-verzakking">
+                  <input type="checkbox" id="edit-weginfra-verzakking" name="weginfra[Verzakking]" checked={{checked "Verzakking" weginfra.Boom_Struik}} value="Verzakking" class="form-checkbox jquery-once-1-processed">
+                  Verzakking </label>
+              </div> 
+              <div class="checkbox">
+                <label class="option" for="edit-weginfra-opstuiking">
+                  <input type="checkbox" id="edit-weginfra-opstuiking" name="weginfra[Opstuiking]" checked={{checked "Opstuiking" weginfra.Boom_Struik}} value="Opstuiking" class="form-checkbox jquery-once-1-processed">
+                  Opstuiking </label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="checkbox">
+                <label class="option" for="edit-weginfra-met-vangrail">
+                  <input type="checkbox" id="edit-weginfra-met-vangrail" name="weginfra[Met_vangrail]" checked={{checked "Met. vangrail" weginfra.Met_vangrail}} value="Met. vangrail" class="form-checkbox jquery-once-1-processed">
+                  Met. vangrail </label>
+              </div>
+              <div class="checkbox">
+                <label class="option" for="edit-weginfra-andere">
+                  <input type="checkbox" id="edit-weginfra-andere" name="weginfra[Andere]" value="Andere" checked={{checked "Andere" weginfra.Andere}} class="form-checkbox jquery-once-1-processed jquery-once-2-processed">
+                  Andere </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-item form-type-textfield form-item-weginfra-andere" style="display: none;">
+            <input class="andere-text form-text" type="text" value="{{weginfra_andere}}" id="edit-weginfra-andere--2" name="weginfra_andere" size="32" maxlength="128">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 checkbox">
+            <label class="option" for="edit-wateroverlast">
+              <input type="checkbox" id="edit-wateroverlast" name="wateroverlast" checked={{checked "wateroverlast" wateroverlast}} value="wateroverlast" class="form-checkbox jquery-once-1-processed hide_next">
+              Wateroverlast </label>
+          </div>
+          <div class="col-md-8" style="display:inherit">
+            <input placeholder="Omschrijving" type="text"  value="{{wateroverlast_omschrijving}}" id="edit-wateroverlast-omschrijving" name="wateroverlast_omschrijving"  size="32" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 checkbox">
+            <label class="option" for="edit-Stormschade">
+              <input type="checkbox" id="edit-stormschade" name="stormschade" value="stormschade" checked={{checked "stormschade" stormschade}} class="form-checkbox jquery-once-1-processed hide_next">
+              Stormschade </label>
+          </div>
+          <div class="col-md-8" style="display:inherit">
+            <input placeholder="Omschrijving" type="text" value="{{stormschade_omschrijving}}" id="edit-stormschade-omschrijving" name="stormschade_omschrijving"  size="32" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="straat_nr">
+          <div class="checkbox">
+            <label class="option" for="edit-ongeval">
+              <input type="checkbox" id="edit-ongeval" name="ongeval" checked={{checked "ongeval" ongeval}} value="ongeval" class="hide_next">
+              Ongeval </label>
+          </div>
+          <div id="edit-ongeval-items" class="show_next row" style="display:inherit; margin-left: 5%">
+            <div class="col-md-4">
+              <div class=checkbox>
+                <label class="option" for="edit-ongeval-items-met-stootb">
+                  <input type="checkbox" id="edit-ongeval-items-met-stootb" checked={{checked "Met. stootb." ongeval_items.Met_stootb}} name="ongeval_items[Met_stootb]" value="Met. stootb." class="form-checkbox jquery-once-1-processed">
+                  Met. stootb. </label>
+              </div>
+              <div class="checkbox">
+                <label class="option" for="edit-ongeval-items-bet-stootb">
+                  <input type="checkbox" id="edit-ongeval-items-bet-stootb" checked={{checked "Bet. stootb." ongeval_items.Bet_stootb}} name="ongeval_items[Bet_stootb]" value="Bet. stootb." class="form-checkbox jquery-once-1-processed">
+                  Bet. stootb. </label>
+              </div>
+              <div class="checkbox">
+                <label class="option" for="edit-ongeval-items-signalisatie">
+                  <input type="checkbox" id="edit-ongeval-items-signalisatie" checked={{checked "Signalisatie" ongeval_items.Signalisatie}} name="ongeval_items[Signalisatie]" value="Signalisatie" class="form-checkbox jquery-once-1-processed">
+                  Signalisatie </label>
+              </div>
+              <div class="checkbox">
+                <label class="option" for="edit-ongeval-items-elektrische-installatie">
+                  <input type="checkbox" id="edit-ongeval-items-elektrische-installatie"  checked={{checked "Elektrische Installatie" ongeval_items.Elektrische_Installatie}} name="ongeval_items[Elektrische_Installatie]" value="Elektrische Installatie" class="form-checkbox jquery-once-1-processed">
+                  Elektrische Installatie </label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="checkbox">
+                <input type="checkbox" id="edit-ongeval-items-boomstruik" checked={{checked "Boom/Struik" ongeval_items.Boom_Struik}} name="ongeval_items[Boom_Struik]" value="Boom/Struik" class="form-checkbox jquery-once-1-processed">
+                <label class="option" for="edit-ongeval-items-boomstruik">Boom/Struik </label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="edit-ongeval-items-kunstwerk" name="ongeval_items[Kunstwerk]" checked={{checked "Kunstwerk" ongeval_items.Kunstwerk}} value="Kunstwerk" class="form-checkbox jquery-once-1-processed">
+                <label class="option" for="edit-ongeval-items-kunstwerk">Kunstwerk </label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="edit-ongeval-items-bermtalud" name="ongeval_items[Berm_talud]" checked={{checked "Berm/talu" ongeval_items.Berm_talud}} value="Berm/talud" class="form-checkbox jquery-once-1-processed">
+                <label class="option" for="edit-ongeval-items-bermtalud">Berm/talut </label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="checkbox">
+                <input type="checkbox" id="edit-ongeval-items-wegdek" name="ongeval_items[Wegdek]"  checked={{checked "Wegdek" ongeval_items.Wegdek}} value="Wegdek" class="form-checkbox jquery-once-1-processed">
+                <label class="option" for="edit-ongeval-items-wegdek">Wegdek </label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="edit-ongeval-items-bijstand-brand" name="ongeval_items[Bijstand_brand]"  checked={{checked "Bijstand brand" ongeval_items.Bijstand_brand}} value="Bijstand brand" class="form-checkbox jquery-once-1-processed">
+                <label class="option" for="edit-ongeval-items-bijstand-brand">Bijstand brand </label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="edit-ongeval-items-andere" name="ongeval_items[Andere]" checked={{checked "Andere" ongeval_items.Andere}}  value="Andere" class="form-checkbox hide_next">
+                <label class="option" for="edit-ongeval-items-andere">Andere </label>
+              </div>
+            </div>
+            <div class="form-item form-type-textfield form-item-ongeval-items-andere show_next" style="display: none;">
+              <input class="andere-text form-text" type="text" value="{{ongeval_items_andere}}" id="edit-ongeval-items-andere--2" name="ongeval_items_andere"  size="32" maxlength="128">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <input type="checkbox" id="edit-ladingverlies" name="ladingverlies"  checked={{checked "ladingverlies" ladingverlies}} value="ladingverlies" class="form-checkbox hide_next">
+            <label class="option" for="edit-ladingverlies">ladingverlies </label>
+          </div>
+          <div class="col-md-6"  style="display:inherit">
+            <input placeholder="Omschrijving" class="form-control" type="text" id="edit-ladingverlies-omschrijving" value="{{ladingverlies_omschrijving}}" name="ladingverlies_omschrijving"  size="32" maxlength="128">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <input type="checkbox" id="edit-bodemverontreiniging" name="bodemverontreiniging" checked={{checked "bodemverontreiniging" bodemverontreiniging}} value="bodemverontreiniging" class="form-checkbox hide_next">
+            <label class="option" for="edit-bodemverontreiniging">bodemverontreiniging </label>
+          </div>
+          <div class="col-md-6" style="display:inherit">
+            <input placeholder="Omschrijving"  class="form-control" type="text" id="edit-bodemverontreiniging-omschrijving" value="{{bodemverontreiniging_omschrijving}}" name="bodemverontreiniging_omschrijving"  size="32" maxlength="128">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <input type="checkbox" id="edit-andere" name="andere"  checked={{checked "andere" andere}} value="andere" class="form-checkbox hide_next">
+            <label class="option" for="edit-andere">andere </label>
+          </div>
+          <div class="col-md-6 form-group" style="display:inherit">
+            <input placeholder="Omschrijving" class="form-control" type="text" id="edit-andere-omschrijving" value="{{andere_omschrijving}}" name="andere_omschrijving"  size="32" maxlength="128">
+          </div>
+        </div>
+      </div>
+      <div class="content tab-pane" id="panel5a" data-options="scroll_to_content: false" ng-show="panels.panel5a">
+        <h4>Oproep aan</h4>
+        <div class="row">
+          <div class="checkbox col-md-3">
+            <label class="option" for="edit-regie">
+              <input type="checkbox" id="edit-regie" name="Regie" checked={{checked "Regie" Regie}} value="Regie" class="form-checkbox hide_next">
+              Regie </label>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <input placeholder="Uur" type="time" id="edit-uur-regie" name="uur_regie"  size="20" maxlength="128" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="checkbox">
+              <label class="option" for="edit-regie-opties-na-oproep">
+                <input type="checkbox" id="edit-regie-opties-na-oproep" name="regie_opties[Na_oproep]" checked={{checked "Na oproep" regie_opties.Na_oproep}} value="Na oproep" class="form-checkbox jquery-once-1-processed">
+                Na oproep </label>
+            </div>
+            <div class="checkbox">
+              <label class="option" for="edit-regie-opties-na-vaststellingen">
+                <input type="checkbox" id="edit-regie-opties-na-vaststellingen" name="regie_opties[na_vaststellingen]" checked={{checked "na vaststellingen" regie_opties.na_vaststellingen}} value="na vaststellingen" class="form-checkbox jquery-once-1-processed">
+                Na vaststellingen </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="checkbox col-md-3">
+            <label class="option" for="edit-regie">
+              <input type="checkbox" id="edit-regie" name="Aannemer" checked={{checked "Aannemer" Aannemer}} value="Aannemer" class="form-checkbox hide_next">
+              Aannemer </label>
+          </div>
+          <div class="col-md-4">
+            <div>
+              <input placeholder="Uur" type="time" id="edit-uur-regie" value="{{uur_regie}}" name="uur_regie"  size="20" maxlength="128" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <input type="text" id="edit-regie-opties-na-oproep" name="aannemer" value="{{aannemer}}" placeholder="Aannemer" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="checkbox col-md-3">
+            <label class="option" for="edit-regie">
+              <input type="checkbox" id="edit-regie" name="Signalisatie" checked={{checked "Signalisatie" Signalisatie}} value="Signalisatie" class="form-checkbox hide_next">
+              Signalisatie </label>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <input placeholder="Uur" type="time" id="edit-uur-regie" value="{{uur_regie}}" name="uur_regie"  size="6" maxlength="128" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="checkbox">
+              <label class="option" for="edit-regie-opties-na-oproep">
+                <input type="checkbox" id="edit-regie-opties-na-oproep" checked={{checked "Na oproep" regie_opties.Na_oproep}} name="regie_opties[Na_oproep]" value="Na oproep" class="form-checkbox jquery-once-1-processed">
+                Bots. Bestek </label>
+            </div>
+            <div class="checkbox">
+              <label class="option" for="edit-regie-opties-na-vaststellingen">
+                <input type="checkbox" id="edit-regie-opties-na-vaststellingen" name="regie_opties[na_vaststellingen]"  checked={{checked "na vaststellingen" regie_opties.na_vaststellingen}} value="na vaststellingen" class="form-checkbox jquery-once-1-processed">
+                Aannemer </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 checkbox">
+            <label class="option" for="edit-bodemdeskundige">
+              <input type="checkbox" id="edit-bodemdeskundige"  checked={{checked "bodemdeskundige" bodemdeskundige}} name="bodemdeskundige" value="bodemdeskundige" class="form-checkbox hide_next">
+              Bodemdeskundige</label>
+          </div>
+          <div class="col-md-4">
+            <input placeholder="Uur" type="time" id="edit-uur-regie" value="{{uur_regie}}" name="uur_regie"  size="6" maxlength="128" class="form-control">
+          </div>
+          <div class="col-md-5">
+            <input type="text" id="edit-regie-opties-na-oproep" name="bodemdeskundige" value="{{bodemdeskundige}}" placeholder="Bodemdeskundige" class="form-control">
+          </div>
+        </div>
+        <div >
+          <div class="checkbox">
+            <label class="option" for="edit-oproep-aan-overige2-politie">
+              <input type="checkbox" id="edit-oproep-aan-overige2-politie" checked={{checked "Politie" oproep_aan_overige2.Politie}} name="oproep_aan_overige2[Politie]" value="Politie" class="form-checkbox jquery-once-1-processed">
+              Politie </label>
+          </div>
+          <div class="checkbox">
+            <label class="option" for="edit-oproep-aan-overige2-brandweer">
+              <input type="checkbox" id="edit-oproep-aan-overige2-brandweer" checked={{checked "Brandweer" oproep_aan_overige2.Brandweer}} name="oproep_aan_overige2[Brandweer]" value="Brandweer" class="form-checkbox jquery-once-1-processed">
+              Brandweer </label>
+          </div>
+          <div class="checkbox">
+            <label class="option" for="edit-oproep-aan-overige2-civiele-beschermling">
+              <input type="checkbox" id="edit-oproep-aan-overige2-civiele-beschermling" checked={{checked "Civiele Beschermling" oproep_aan_overige2.Civiele_Beschermling}} name="oproep_aan_overige2[Civiele_Beschermling]" value="Civiele Beschermling" class="form-checkbox jquery-once-1-processed">
+              Civiele Beschermling </label>
+          </div>
+          <div class="checkbox">
+            <label class="option" for="edit-oproep-aan-overige2-fasttakeldienst">
+              <input type="checkbox" id="edit-oproep-aan-overige2-fasttakeldienst" checked={{checked "FAST Takeldienst" oproep_aan_overige2.FAST_Takeldienst}} name="oproep_aan_overige2[FAST_Takeldienst]" value="FAST Takeldienst" class="form-checkbox jquery-once-1-processed">
+              FAST/Takeldienst </label>
+          </div>
+        </div>
+        <h4>Kennisgave aan</h4>
+        <div id="edit-kennisgave-aan" class="form-checkboxes">
+          <div class="checkbox">
+            <label class="option" for="edit-kennisgave-aan-vvc">
+              <input type="checkbox" id="edit-kennisgave-aan-vvc" name="kennisgave_aan[VVC]"  checked={{checked "Brandweer" kennisgave_aan.VVC}} value="VVC" class="form-checkbox jquery-once-1-processed">
+              VVC </label>
+          </div>
+          <div class="checkbox">
+            <label class="option" for="edit-kennisgave-aan-wachtdienst">
+              <input type="checkbox" id="edit-kennisgave-aan-wachtdienst" name="kennisgave_aan[Wachtdienst]"  checked={{checked "Wachtdienst" kennisgave_aan.Wachtdienst}} value="Wachtdienst" class="form-checkbox jquery-once-1-processed">
+              Wachtdienst </label>
+          </div>
+          <div class="checkbox">
+            <label class="option" for="edit-kennisgave-aan-politie">
+              <input type="checkbox" id="edit-kennisgave-aan-politie" name="kennisgave_aan[Politie]"  checked={{checked "Politie" kennisgave_aan.Politie}} value="Politie" class="form-checkbox jquery-once-1-processed">
+              Politie </label>
+          </div>
+          <div class="checkbox">
+            <label class="option" for="edit-kennisgave-aan-andere">
+              <input type="checkbox" id="edit-kennisgave-aan-andere" name="kennisgave_aan[Andere]" checked={{checked "Andere" kennisgave_aan.Andere}} value="Andere" class="form-checkbox jquery-once-1-processed">
+              Andere </label>
+          </div>
+        </div>
+      </div>
+      <div class="content tab-pane" id="panel6a" data-options="scroll_to_content: false" ng-show="panels.panel6a">
+        <div class="row">
+          <div class="col-md-5 form-group">
+            <label style="margin-top: 17px">Regie ter plaatse:</label>
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="edit-regie-van-uur">Van </label>
+            <input placeholder="Uur" type="time" id="edit-regie-van-uur" value="{{regie_van_uur}}" name="regie_van_uur"  size="6" maxlength="128" class="form-control">
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="edit-regie-tot-uur">Tot </label>
+            <input placeholder="Uur" type="time" id="edit-regie-tot-uur" value="{{regie_tot_uur}}" name="regie_tot_uur"  size="6" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            &nbsp;
+          </div>
+          <div class="col-md-7 form-group">
+            <label for="edit-regie-arbeider">R. arbeiders </label>
+            <input placeholder="R. arbeiders" type="text" value="{{regie_arbeider}}" id="edit-regie-arbeider" name="regie_arbeider"  size="30" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5 form-group">
+            <label style="margin-top: 17px">Aannemer ter plaatse:</label>
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="edit-regie-van-uur">Van </label>
+            <input placeholder="Uur" type="time" id="edit-regie-van-uur" value="{{aannemer_van_uur}}" name="aannemer_van_uur"  size="6" maxlength="128" class="form-control">
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="edit-regie-tot-uur">Tot </label>
+            <input placeholder="Uur" type="time" id="edit-regie-tot-uur" value="{{aannemer_tot_uur}}" name="aannemer_tot_uur"  size="6" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            &nbsp;
+          </div>
+          <div class="col-md-7 form-group">
+            <label for="edit-regie-arbeider">R. toezichter</label>
+            <input placeholder="R. toezichter" type="text" id="edit-regie-arbeider" value="{{toezichter_tot_uur}}" name="toezichter_tot_uur"  size="30" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5 form-group">
+            <label style="margin-top: 17px">Signalisatie ter plaatse:</label>
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="edit-regie-van-uur">Van </label>
+            <input placeholder="Uur" type="time" id="edit-regie-van-uur" value="{{signalisatie_van_uur}}" name="signalisatie_van_uur"  size="6" maxlength="128" class="form-control">
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="edit-regie-tot-uur">Tot </label>
+            <input placeholder="Uur" type="time" id="edit-regie-tot-uur" value="{{signalisatie_tot_uur}}" name="signalisatie_tot_uur"  size="6" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            &nbsp;
+          </div>
+          <div class="col-md-7 form-group">
+            <label for="edit-regie-arbeider">Aantal Botsers </label>
+            <input placeholder="Aantal Botsers" type="text" id="edit-regie-arbeider"  value="{{aantal_botsers}}" name="aantal_botsers"  size="30" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5 form-group">
+            <label style="margin-top: 17px">Deskundige ter plaatse:</label>
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="edit-regie-van-uur">Van </label>
+            <input placeholder="Uur" type="time" id="edit-regie-van-uur" value="{{deskundige_tot_uur}}" name="deskundige_tot_uur"  size="6" maxlength="128" class="form-control">
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="edit-regie-tot-uur">Tot </label>
+            <input placeholder="Uur" type="time" id="edit-regie-tot-uur" value="{{deskundige_van_uur}}" name="deskundige_van_uur"  size="6" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            &nbsp;
+          </div>
+          <div class="col-md-7 form-group">
+            <label for="edit-regie-arbeider">Deskundige </label>
+            <input placeholder="Deskundige" type="text" id="edit-regie-arbeider" name="deskundige" value="{{deskundige}}" size="30" maxlength="128" class="form-control">
+          </div>
+        </div>
+        <div class="form-item form-type-checkboxes form-item-ondernomen-actie">
+          <label for="edit-ondernomen-actie">Ondernomen actie </label>
+          <div id="edit-ondernomen-actie" class="form-checkboxes">
+            <div class="form-group">
+              <input type="checkbox" id="edit-ondernomen-actie-afgraving"  checked={{checked "Afgraving" ondernomen_actie.Afgraving}} name="ondernomen_actie[Afgraving]" value="Afgraving" class="form-checkbox jquery-once-1-processed">
+              <label class="option" for="edit-ondernomen-actie-afgraving">Afgraving </label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" id="edit-ondernomen-actie-ontstoppen-riolering" checked={{checked "Ontstoppen riolering" ondernomen_actie.Ontstoppen_riolering}} name="ondernomen_actie[Ontstoppen_riolering]" value="Ontstoppen riolering" class="form-checkbox jquery-once-1-processed">
+              <label class="option" for="edit-ondernomen-actie-ontstoppen-riolering">Ontstoppen riolering </label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" id="edit-ondernomen-actie-reinigen-wegdek" checked={{checked "Reinigen wegdek" ondernomen_actie.Reinigen_wegdek}} name="ondernomen_actie[Reinigen_wegdek]" value="Reinigen wegdek" class="form-checkbox jquery-once-1-processed">
+              <label class="option" for="edit-ondernomen-actie-reinigen-wegdek">Reinigen wegdek </label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" id="edit-ondernomen-actie-verwijderen-aanpassen-stootbanden" checked={{checked "Verwijderen / Aanpassen stootbanden" ondernomen_actie.Verwijderen_Aanpassen_stootbanden}} name="ondernomen_actie[Verwijderen_Aanpassen_stootbanden]" value="Verwijderen / Aanpassen stootbanden" class="form-checkbox jquery-once-1-processed">
+              <label class="option" for="edit-ondernomen-actie-verwijderen-aanpassen-stootbanden">Verwijderen / Aanpassen stootbanden </label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" id="edit-ondernomen-actie-vullen-put" checked={{checked "Vullen put" ondernomen_actie.Vullen_put}} name="ondernomen_actie[Vullen_put]" value="Vullen put" class="form-checkbox jquery-once-1-processed">
+              <label class="option" for="edit-ondernomen-actie-vullen-put">Vullen put </label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" id="edit-ondernomen-actie-andere" checked={{checked "Andere" ondernomen_actie.Andere}} name="ondernomen_actie[Andere]" value="Andere" class="form-checkbox jquery-once-1-processed">
+              <label class="option" for="edit-ondernomen-actie-andere">Andere </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="edit-actie-opmerking">Opmerking </label>
+          <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
+            <textarea placeholder="Opmerking" id="edit-actie-opmerking" value="{{actie_opmerking}}" name="actie_opmerking" cols="60" rows="3" class="form-control"></textarea>            <div class="grippie"></div>
+          </div>
+        </div>
+      </div>
+      <div class="content tab-pane" id="panel7a">
+        <div class="form-item form-type-textarea form-item-bijkomende-vaststelling">
+          <label for="edit-bijkomende-vaststelling">Bijkomende Details Vaststellingen - Acties - Uitvoering - ... </label>
+          <div class="form-group">
+            <textarea placeholder="Bijkomende Details Vaststellingen - Acties - Uitvoering - ..." id="edit-bijkomende-vaststelling" name="bijkomende_vaststelling" cols="60" rows="15" class="form-control">{{bijkomende_vaststelling}}</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="content tab-pane" id="panel8a">
+        <div id="uploadenContainer">
+          <p style="font-size: smaller; text-align: center; width: 80%">
+            Maxmimum grote: 100MB
+          </p>
+          <form id="upload_file" style="" action="upload">
+            <input type="file" id="uploadFile" name="filename" style="display:inherit;" multiple/>
+          </form>
+          <div id=image style="" class=dropzone>
+            <div style="padding: 10px 10px; font-size: 15px; line-height: 150%;">
+              Sleep een of meerdere <strong>bestanden</strong> naar hier of <strong>Klik</strong> hier om een of meerdere bestanden te uploaden.
+            </div>
+          </div>
+          <div class="progress progress-striped active" style="width: 80%; margin-top: 10px; display: none;">
+            <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+              <span class="sr-only">45% Complete</span>
+            </div>
+          </div>
+          <strong>Geuploade bestanden:</strong>
+          <input type=hidden name=filenames id=filenames />
+          <ul id=uploadedFiles></ul>
+        </div>
+      </div>
+      <div class="content tab-pane" id="panel9a">
+        <div class="row">
+          <div id="edit-afmelding-datum-uur" class="small-4 medium-4 large-4 columns">
+            <label for="edit-afmelding-datum-uur" style="margin-top:17px">Datum &amp; uur afmelding </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <label for="edit-afmelding-datum-uur-datepicker-popup-0">Date </label>
+            <input placeholder="datum" type="date" id="edit-afmelding-datum-uur-datepicker-popup-0" name="afmelding_datum_uur" value="{{afmelding_datum_uur}}" size="40" maxlength="30" class="form-control">
+          </div>
+          <div class="col-md-4 form-group">
+            <label for="edit-afmelding-datum-uur-timeEntry-popup-1">Time </label>
+            <input placeholder="datum" type="time" id="edit-afmelding-datum-uur-timeEntry-popup-1" name="afmelding_datum_tijd" value="{{afmafmelding_datum_tijd}}" size="15" maxlength="10" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="edit-opmerking">Opmerking </label>
+          <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
+            <textarea placeholder="Opmerking" id="edit-opmerking" name="opmerking" cols="60" rows="3" class="form-control">{{opmerking}}</textarea>            <div class="grippie"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</template>

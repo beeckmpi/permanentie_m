@@ -1,14 +1,46 @@
 <head>
-  <title>permanentie_m</title>
+	<title> permanentie_m</title>
 </head>
-
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
+	<nav class="navbar navbar-inverse navbar-static-top">
+		<div class=container-fluid>
+			<div class="navbar-header" style="padding-top:5px">
+				<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class=sr-only> Toggle navigation</span>
+				</button>
+				<a class="navbar-brand" href="#"> Permanentiefiches</a>
+			</div>
+      	{{#if currentUser}}
+  			<div class="collapse navbar-collapse" id=bs-example-navbar-collapse-1>
+  				<ul class="navbar-right navbar-nav nav">
+  					<li class="dropdown">
+  						<a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+  						  {{currentUser.profile.naam}}
+  					 	   <span class="caret"></span>
+  					 	</a>
+  						<ul class="dropdown-menu">
+  							<li><a href='#'>Instellingen</a></li>
+  							<li><a href="/afmelden">Afmelden</a></li>
+  						</ul>
+  					</li>
+  				</ul>
+  			</div>
+  		{{/if}}
+  	</div>
+  </nav>
+  
+	<div class="container-fluid">
+		<div class="row">
+			{{#if currentUser}}
+				{{> zijbar}}
+			{{else}}
+				<div class="col-md-3">
+					&nbsp;
+				</div>
+			{{/if}}
+			<div class="col-md-9">
+				{{>Router}}
+			</div>
+		</div>
+	</div>
 </body>
-
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
