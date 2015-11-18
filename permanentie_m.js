@@ -42,6 +42,7 @@ if (Meteor.isClient) {
     	Meteor.call('toevoegen', data);
     }
   });
+  
   Template.Bewerken.onRendered(function(){
     $('#panel4a').css('display', 'inherit');
     $('.tab4').addClass('selected').append('<span class="glyphicon glyphicon-chevron-right" style="position:absolute; top: 8px; right: 8px;"></span>');
@@ -67,6 +68,22 @@ if (Meteor.isClient) {
     	var data = $('#bewerken').serializeJSON();
     	console.log(data);
     	Meteor.call('bewerken', data);
+    },
+    'click .andere': function (event, template) {
+      $this = $(event.target);
+      if ($this.prop('checked')){
+        $this.parent().next('input').css('display', 'inherit');
+      } else {
+        $this.parent().next('input').val('').css('display', 'none');
+      }
+    },
+    'click .groep_chbx': function(event, template){
+      $this = $(event.target);
+      if ($this.prop('checked')){
+        $this.parents('.checkbox').next('div').css('display', 'inherit');
+      } else {
+        $this.parents('.checkbox').next('div').css('display', 'none');
+      }
     }
   });
   Template.createUser.events({

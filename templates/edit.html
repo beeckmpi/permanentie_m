@@ -175,25 +175,27 @@
             </div>
             <div class="checkbox">
               <label class="option" for="edit-aanwezig-andere">
-                <input type="checkbox" id="edit-aanwezig-andere" checked={{checked "Andere" aanwezig.Andere}} name="aanwezig[Andere]" value="Andere">
+                <input type="checkbox" id="edit-aanwezig-andere" checked={{checked "Andere" aanwezig.Andere}} name="aanwezig[Andere]" value="Andere" class="andere">
                 Andere </label>
+                <input placeholder="Andere" type="text" id="edit_aanwezige_andere" name="edit_aanwezige_andere"  size="40" maxlength="128" class="form-text form-control form-autocomplete" autocomplete="OFF" aria-autocomplete="list" style="display: none">
             </div>
           </div>
         </div>
         <div class="form-item form-type-textarea form-item-aanwezig-opmerking">
           <label for="edit-aanwezig-opmerking">Opmerking </label>
           <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
-            <textarea placeholder="Opmerking" id="edit-aanwezig-opmerking" name="aanwezig_opmerking" cols="60" rows="1" class="form-textarea">{{aanwezig_opmerking}}</textarea>            <div class="grippie"></div>
+            <textarea placeholder="Opmerking" id="edit-aanwezig-opmerking" name="aanwezig_opmerking" cols="60" rows="2" class="form-control">{{aanwezig_opmerking}}</textarea>            <div class="grippie"></div>
           </div>
         </div>
         <h4>Incident / Schade</h4>
         <div class="straat_nr">
           <div class="checkbox">
             <label class="option" for="edit-weginfrastructuur">
-              <input type="checkbox" id="edit-weginfrastructuur" checked={{checked "weginfrastructuur" weginfrastructuur}} name="weginfrastructuur" value="1">
-              Weginfrastructuur </label>
+              <input type="checkbox" id="edit-weginfrastructuur" checked={{checked "weginfrastructuur" weginfrastructuur}} class="groep_chbx" name="weginfrastructuur" value="1">
+              Weginfrastructuur 
+            </label>
           </div>
-          <div id="edit-weginfra" class="form-checkboxes row show_next">
+          <div id="edit-weginfra" class="form-checkboxes row show_next" style="display:none; margin-left: 1.25%">
             <div class="col-md-4">
               <div class="checkbox">
                 <label class="option" for="edit-weginfra-put-in-rijbaan">
@@ -236,42 +238,38 @@
               </div>
               <div class="checkbox">
                 <label class="option" for="edit-weginfra-andere">
-                  <input type="checkbox" id="edit-weginfra-andere" name="weginfra[Andere]" value="Andere" checked={{checked "Andere" weginfra.Andere}} class="form-checkbox jquery-once-1-processed jquery-once-2-processed">
+                  <input type="checkbox" id="edit-weginfra-andere" name="weginfra[Andere]" value="Andere" checked={{checked "Andere" weginfra.Andere}} class="form-checkbox andere">
                   Andere </label>
+                  <input placeholder="Andere" type="text" id="edit_weginfra_andere"  value="{{weginfra.andere_text}}" name="weginfra[andere_text]"  size="40" maxlength="128" class="form-text form-control form-autocomplete" autocomplete="OFF" aria-autocomplete="list" style="display: none">
               </div>
             </div>
           </div>
-          <div class="form-item form-type-textfield form-item-weginfra-andere" style="display: none;">
-            <input class="andere-text form-text" type="text" value="{{weginfra_andere}}" id="edit-weginfra-andere--2" name="weginfra_andere" size="32" maxlength="128">
-          </div>
         </div>
-        <div class="row">
-          <div class="col-md-4 checkbox">
+        <div class="form-type-checkboxes">
+          <div class="checkbox">
             <label class="option" for="edit-wateroverlast">
-              <input type="checkbox" id="edit-wateroverlast" name="wateroverlast" checked={{checked "wateroverlast" wateroverlast}} value="wateroverlast" class="form-checkbox jquery-once-1-processed hide_next">
-              Wateroverlast </label>
-          </div>
-          <div class="col-md-8" style="display:inherit">
-            <input placeholder="Omschrijving" type="text"  value="{{wateroverlast_omschrijving}}" id="edit-wateroverlast-omschrijving" name="wateroverlast_omschrijving"  size="32" maxlength="128" class="form-control">
+              <input type="checkbox" id="edit-wateroverlast" name="wateroverlast" checked={{checked "wateroverlast" wateroverlast}} value="wateroverlast" class="form-checkbox jquery-once-1-processed andere">
+              Wateroverlast 
+            </label>
+            <input placeholder="Omschrijving wateroverlast" type="text"  value="{{wateroverlast_omschrijving}}" id="edit-wateroverlast-omschrijving" name="wateroverlast_omschrijving" style="display:none" size="32" maxlength="128" class="form-control">
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-4 checkbox">
-            <label class="option" for="edit-Stormschade">
-              <input type="checkbox" id="edit-stormschade" name="stormschade" value="stormschade" checked={{checked "stormschade" stormschade}} class="form-checkbox jquery-once-1-processed hide_next">
-              Stormschade </label>
-          </div>
-          <div class="col-md-8" style="display:inherit">
-            <input placeholder="Omschrijving" type="text" value="{{stormschade_omschrijving}}" id="edit-stormschade-omschrijving" name="stormschade_omschrijving"  size="32" maxlength="128" class="form-control">
+        <div class="form-type-checkboxes">
+          <div class="checkbox">
+            <label class="option" for="edit-stormschade">
+              <input type="checkbox" id="edit-stormschade" name="stormschade" value="stormschade" checked={{checked "stormschade" stormschade}} class="form-checkbox jquery-once-1-processed andere">
+              Stormschade 
+            </label>
+            <input placeholder="Omschrijving stormschade" type="text" value="{{stormschade_omschrijving}}" id="edit-stormschade-omschrijving" name="stormschade_omschrijving" style="display:none"  size="32" maxlength="128" class="form-control">
           </div>
         </div>
         <div class="straat_nr">
           <div class="checkbox">
             <label class="option" for="edit-ongeval">
-              <input type="checkbox" id="edit-ongeval" name="ongeval" checked={{checked "ongeval" ongeval}} value="ongeval" class="hide_next">
+              <input type="checkbox" id="edit-ongeval" name="ongeval" checked={{checked "ongeval" ongeval}} value="ongeval" class="groep_chbx">
               Ongeval </label>
           </div>
-          <div id="edit-ongeval-items" class="show_next row" style="display:inherit; margin-left: 5%">
+          <div id="edit-ongeval-items" class="show_next row" style="display:none; margin-left: 1.25%">
             <div class="col-md-4">
               <div class=checkbox>
                 <label class="option" for="edit-ongeval-items-met-stootb">
@@ -296,30 +294,43 @@
             </div>
             <div class="col-md-4">
               <div class="checkbox">
-                <input type="checkbox" id="edit-ongeval-items-boomstruik" checked={{checked "Boom/Struik" ongeval_items.Boom_Struik}} name="ongeval_items[Boom_Struik]" value="Boom/Struik" class="form-checkbox jquery-once-1-processed">
-                <label class="option" for="edit-ongeval-items-boomstruik">Boom/Struik </label>
+              	<label class="option" for="edit-ongeval-items-boomstruik">
+	                <input type="checkbox" id="edit-ongeval-items-boomstruik" checked={{checked "Boom/Struik" ongeval_items.Boom_Struik}} name="ongeval_items[Boom_Struik]" value="Boom/Struik" class="form-checkbox jquery-once-1-processed">
+	                Boom/Struik 
+	               </label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="edit-ongeval-items-kunstwerk" name="ongeval_items[Kunstwerk]" checked={{checked "Kunstwerk" ongeval_items.Kunstwerk}} value="Kunstwerk" class="form-checkbox jquery-once-1-processed">
-                <label class="option" for="edit-ongeval-items-kunstwerk">Kunstwerk </label>
+              	<label class="option" for="edit-ongeval-items-kunstwerk">
+	                <input type="checkbox" id="edit-ongeval-items-kunstwerk" name="ongeval_items[Kunstwerk]" checked={{checked "Kunstwerk" ongeval_items.Kunstwerk}} value="Kunstwerk" class="form-checkbox jquery-once-1-processed">
+	                Kunstwerk 
+	              </label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="edit-ongeval-items-bermtalud" name="ongeval_items[Berm_talud]" checked={{checked "Berm/talu" ongeval_items.Berm_talud}} value="Berm/talud" class="form-checkbox jquery-once-1-processed">
-                <label class="option" for="edit-ongeval-items-bermtalud">Berm/talut </label>
+              	<label class="option" for="edit-ongeval-items-bermtalud">
+	                <input type="checkbox" id="edit-ongeval-items-bermtalud" name="ongeval_items[Berm_talud]" checked={{checked "Berm/talu" ongeval_items.Berm_talud}} value="Berm/talud" class="form-checkbox jquery-once-1-processed">
+	                Berm/talut 
+	              </label>
               </div>
             </div>
             <div class="col-md-4">
               <div class="checkbox">
-                <input type="checkbox" id="edit-ongeval-items-wegdek" name="ongeval_items[Wegdek]"  checked={{checked "Wegdek" ongeval_items.Wegdek}} value="Wegdek" class="form-checkbox jquery-once-1-processed">
-                <label class="option" for="edit-ongeval-items-wegdek">Wegdek </label>
+              	<label class="option" for="edit-ongeval-items-wegdek">
+	                <input type="checkbox" id="edit-ongeval-items-wegdek" name="ongeval_items[Wegdek]"  checked={{checked "Wegdek" ongeval_items.Wegdek}} value="Wegdek" class="form-checkbox jquery-once-1-processed">
+	                Wegdek 
+	              </label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="edit-ongeval-items-bijstand-brand" name="ongeval_items[Bijstand_brand]"  checked={{checked "Bijstand brand" ongeval_items.Bijstand_brand}} value="Bijstand brand" class="form-checkbox jquery-once-1-processed">
-                <label class="option" for="edit-ongeval-items-bijstand-brand">Bijstand brand </label>
+              	 <label class="option" for="edit-ongeval-items-bijstand-brand">
+		               <input type="checkbox" id="edit-ongeval-items-bijstand-brand" name="ongeval_items[Bijstand_brand]"  checked={{checked "Bijstand brand" ongeval_items.Bijstand_brand}} value="Bijstand brand" class="form-checkbox jquery-once-1-processed">
+		               Bijstand brand 
+		             </label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="edit-ongeval-items-andere" name="ongeval_items[Andere]" checked={{checked "Andere" ongeval_items.Andere}}  value="Andere" class="form-checkbox hide_next">
-                <label class="option" for="edit-ongeval-items-andere">Andere </label>
+              	<label class="option" for="edit-ongeval-items-andere">
+	                <input type="checkbox" id="edit-ongeval-items-andere" name="ongeval_items[Andere]" checked={{checked "Andere" ongeval_items.Andere}}  value="Andere" class="form-checkbox andere">
+	                Andere
+	              </label>
+                <input placeholder="Andere" type="text" id="edit_weginfra_andere" name="ongeval_items[Andere_text]"  size="40" maxlength="128" class="form-text form-control form-autocomplete" autocomplete="OFF" aria-autocomplete="list" style="display: none">
               </div>
             </div>
             <div class="form-item form-type-textfield form-item-ongeval-items-andere show_next" style="display: none;">
@@ -327,31 +338,31 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="form-group col-md-6">
-            <input type="checkbox" id="edit-ladingverlies" name="ladingverlies"  checked={{checked "ladingverlies" ladingverlies}} value="ladingverlies" class="form-checkbox hide_next">
-            <label class="option" for="edit-ladingverlies">ladingverlies </label>
-          </div>
-          <div class="col-md-6"  style="display:inherit">
-            <input placeholder="Omschrijving" class="form-control" type="text" id="edit-ladingverlies-omschrijving" value="{{ladingverlies_omschrijving}}" name="ladingverlies_omschrijving"  size="32" maxlength="128">
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-6">
-            <input type="checkbox" id="edit-bodemverontreiniging" name="bodemverontreiniging" checked={{checked "bodemverontreiniging" bodemverontreiniging}} value="bodemverontreiniging" class="form-checkbox hide_next">
-            <label class="option" for="edit-bodemverontreiniging">bodemverontreiniging </label>
-          </div>
-          <div class="col-md-6" style="display:inherit">
-            <input placeholder="Omschrijving"  class="form-control" type="text" id="edit-bodemverontreiniging-omschrijving" value="{{bodemverontreiniging_omschrijving}}" name="bodemverontreiniging_omschrijving"  size="32" maxlength="128">
+        <div class="form-item form-type-checkboxes form-item-aanwezig">
+          <div class="checkbox">
+          	<label class="option" for="edit-ladingverlies">
+	            <input type="checkbox" id="edit-ladingverlies" name="ladingverlies"  checked={{checked "ladingverlies" ladingverlies}} value="ladingverlies" class="form-checkbox andere">
+	            Ladingverlies 
+	          </label>
+	          <input placeholder="Omschrijving" class="form-control" type="text" id="edit-ladingverlies-omschrijving" value="{{ladingverlies_omschrijving}}" style="display: none" name="ladingverlies_omschrijving"  size="32" maxlength="128">
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 form-group">
-            <input type="checkbox" id="edit-andere" name="andere"  checked={{checked "andere" andere}} value="andere" class="form-checkbox hide_next">
-            <label class="option" for="edit-andere">andere </label>
+        <div class="form-item form-type-checkboxes form-item-aanwezig">
+          <div class="checkbox">
+          	<label class="option" for="edit-bodemverontreiniging">
+	            <input type="checkbox" id="edit-bodemverontreiniging" name="bodemverontreiniging" checked={{checked "bodemverontreiniging" bodemverontreiniging}} value="bodemverontreiniging" class="form-checkbox andere">
+	            Bodemverontreiniging 
+	          </label>
+	          <input placeholder="Omschrijving"  class="form-control" type="text" id="edit-bodemverontreiniging-omschrijving" value="{{bodemverontreiniging_omschrijving}}" style="display: none" name="bodemverontreiniging_omschrijving"  size="32" maxlength="128">
           </div>
-          <div class="col-md-6 form-group" style="display:inherit">
-            <input placeholder="Omschrijving" class="form-control" type="text" id="edit-andere-omschrijving" value="{{andere_omschrijving}}" name="andere_omschrijving"  size="32" maxlength="128">
+        </div>
+        <div class="form-item form-type-checkboxes form-item-aanwezig">
+          <div class="checkbox">
+          	<label class="option" for="edit-andere">
+	            <input type="checkbox" id="edit-andere" name="andere"  checked={{checked "andere" andere}} value="andere" class="form-checkbox andere">
+	            Andere 
+	          </label>
+            <input placeholder="Omschrijving" class="form-control" type="text" id="edit-andere-omschrijving" value="{{andere_omschrijving}}" name="andere_omschrijving" style="display: none"  size="32" maxlength="128">
           </div>
         </div>
       </div>
@@ -463,9 +474,9 @@
               VVC </label>
           </div>
           <div class="checkbox">
-            <label class="option" for="edit-kennisgave-aan-wachtdienst">
-              <input type="checkbox" id="edit-kennisgave-aan-wachtdienst" name="kennisgave_aan[Wachtdienst]"  checked={{checked "Wachtdienst" kennisgave_aan.Wachtdienst}} value="Wachtdienst" class="form-checkbox jquery-once-1-processed">
-              Wachtdienst </label>
+            <label class="option" for="edit-kennisgave-aan-VTC">
+              <input type="checkbox" id="edit-kennisgave-aan-VTC" name="kennisgave_aan[VTC]"  checked={{checked "VTC" kennisgave_aan.VTC}} value="VTC" class="form-checkbox jquery-once-1-processed">
+              VTC </label>
           </div>
           <div class="checkbox">
             <label class="option" for="edit-kennisgave-aan-politie">
