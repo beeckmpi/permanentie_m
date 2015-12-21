@@ -6,7 +6,7 @@ if (Meteor.isClient) {
     $('.tab1').addClass('selected').append('<span class="glyphicon glyphicon-chevron-right" style="position:absolute; top: 8px; right: 8px;"></span>');
   });
   Template.Toevoegen.events({
-    'click .tabs dd': function (event, template) {
+    'click .tabs-special dd': function (event, template) {
       $this = $(event.target);
       var className = $this.attr('class');      
       var tabPane = {tab1: 'panel1a', tab2: 'panel2a', tab3: 'panel3a', tab4: 'panel4a', tab5: 'panel5a', tab6: 'panel6a', tab7: 'panel7a', tab8: 'panel8a', tab9: 'panel9a'};
@@ -48,13 +48,13 @@ if (Meteor.isClient) {
     $('.tab4').addClass('selected').append('<span class="glyphicon glyphicon-chevron-right" style="position:absolute; top: 8px; right: 8px;"></span>');
   });
   Template.Bewerken.events({
-  	'click .tabs dd': function (event, template) {
+  	'click .tabs-special dd': function (event, template) {
       $this = $(event.target);
       var className = $this.attr('class');      
       var tabPane = {tab1: 'panel1a', tab2: 'panel2a', tab3: 'panel3a', tab4: 'panel4a', tab5: 'panel5a', tab6: 'panel6a', tab7: 'panel7a', tab8: 'panel8a', tab9: 'panel9a'};
       $('.tab-pane').css('display', 'none');
-      $('.tabs dd').removeClass('selected');
-      $('.tabs dd span').remove();
+      $('.tabs-special dd').removeClass('selected');
+      $('.tabs-special dd span').remove();
       if(!className){
         var tab = 'panel4a';
       } else {

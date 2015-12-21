@@ -55,3 +55,4 @@ Router.route('/bewerken_documenten/:id', function(){
 	var documenten = Documenten.findOne({_id: this.params.id}); 
 	this.render('Bewerken', {data: documenten});
 });
+

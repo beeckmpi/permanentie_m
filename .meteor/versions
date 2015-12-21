@@ -33,6 +33,7 @@ email@1.0.8
 ephemer:reactive-datatables@1.1.0
 es5-shim@4.1.14
 fastclick@1.0.7
+fortawesome:fontawesome@4.4.0_1
 geojson-utils@1.0.4
 google@1.1.7
 hot-code-push@1.0.0
@@ -56,6 +57,7 @@ launch-screen@1.0.4
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
+materialize:materialize@0.97.3
 meteor@1.1.10
 meteor-base@1.0.1
 meteortoys:toykit@2.2.1
@@ -93,9 +95,10 @@ stylus@2.511.1
 templating@1.1.5
 templating-tools@1.0.0
 tracker@1.0.9
-twbs:bootstrap@3.3.5
+twbs:bootstrap@3.3.6
 ui@1.0.8
 underscore@1.0.4
 url@1.0.5
 webapp@1.2.3
 webapp-hashing@1.0.5
+webix:webix@2.5.14

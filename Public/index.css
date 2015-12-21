@@ -20,7 +20,7 @@ ul li {
   list-style:none;
 }
 
-.tabs dd {
+.tabs-special dd {
   display: block;
   background: #efefef;
   color: #222222;
@@ -29,14 +29,14 @@ ul li {
   line-height: inherit;
   cursor:pointer;
 }
-.tabs dd.selected {
+.tabs-special dd.selected {
   background: #ccc;
 }
-.tabs dd:hover {
+.tabs-special dd:hover {
   background: #dedede;
 }
 
-.tabs dd.active {
+.tabs-special dd.active {
   background: #ccc;
 }
 

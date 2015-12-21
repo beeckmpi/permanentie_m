@@ -22,9 +22,12 @@ accounts-password
 accounts-google
 ian:accounts-ui-bootstrap-3
 iron:router
-twbs:bootstrap
 ephemer:reactive-datatables
 dalgard:jade
 msavin:mongol
 pcel:serialize
 momentjs:moment
+webix:webix
+fortawesome:fontawesome
+materialize:materialize
+twbs:bootstrap
